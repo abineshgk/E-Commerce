@@ -1,0 +1,102 @@
+
+.loginSignup {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f6f6f6;
+  padding: 20px;
+}
+
+
+.loginSignup-container {
+  width: 380px;
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.loginSignup-container h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 600;
+  color: #222;
+}
+
+.loginSignup-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.loginSignup-fields input {
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.loginSignup-fields input:hover {
+  border-color: #aaa;
+}
+.loginSignup-fields input:focus {
+  border-color: #4a63f3;
+  box-shadow: 0 0 4px rgba(74, 99, 243, 0.3);
+}
+
+.loginSignup-container button {
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: #4a63f3;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.loginSignup-container button:hover {
+  background: #3a53d3;
+}
+
+.loginSignup-container button:active {
+  transform: scale(0.97);
+}
+
+.loginSignup-login {
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+.loginSignup-login span {
+  color: #4a63f3;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.loginSignup-login span:hover {
+  text-decoration: underline;
+}
+
+.loginSignup-agree {
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+  color: #555;
+  align-items: center;
+}
+
+.loginSignup-agree input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}

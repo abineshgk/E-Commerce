@@ -1,0 +1,155 @@
+.productDisplay {
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto;
+  display: flex;
+  gap: 40px;
+  padding: 20px;
+}
+
+.productDisplay-left {
+  flex: 1;
+  display: flex;
+  gap: 20px;
+}
+
+.productDisplay-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.productDisplay-list img {
+  width: 65px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  transition: transform .15s ease, border .15s ease;
+}
+
+.productDisplay-list img:hover {
+  transform: scale(1.05);
+  border-color: #777;
+}
+
+.productDisplay-image {
+  flex: 1;
+}
+
+.productDisplay-main-img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid #e0e0e0;
+}
+
+.productDisplay-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.productDisplay-right h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #222;
+  margin: 0;
+}
+
+.productDisplay-right-star {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.productDisplay-right-star img {
+  width: 20px;
+}
+
+.productDisplay-right-star p {
+  color: #555;
+  font-size: 14px;
+}
+
+.productDisplay-right-prices {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 8px 0;
+}
+
+.productDisplay-right-oldprice {
+  font-size: 18px;
+  color: #777;
+  text-decoration: line-through;
+}
+
+.productDisplay-right-newprice {
+  font-size: 22px;
+  color: #ff4c4c;
+  font-weight: 600;
+}
+
+.productDisplay-right-description {
+  line-height: 1.6;
+  color: #444;
+  font-size: 15px;
+}
+
+.productDisplay-right-size h1 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.productDisplay-right-size div {
+  display: flex;
+  gap: 10px;
+}
+
+.productDisplay-right-size div div {
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background .15s ease, border .15s ease;
+}
+
+.productDisplay-right-size div div:hover {
+  background: #f0f0f0;
+  border-color: #999;
+}
+
+.productDisplay-right button {
+  padding: 14px 20px;
+  margin-top: 10px;
+  background: rgba(255, 255, 0, 0.748);
+  color: black;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background .2s ease, transform .1s ease;
+}
+
+.productDisplay-right button:hover {
+  background: rgb(242, 242, 14);
+}
+
+.productDisplay-right button:active {
+  transform: scale(0.97);
+}
+
+.productDisplay-right-category {
+  margin-top: 5px;
+  color: #555;
+}
+
+.productDisplay-right-category span {
+  font-weight: 600;
+  color: #222;
+}
