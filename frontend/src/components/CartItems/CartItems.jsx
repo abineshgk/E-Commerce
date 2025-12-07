@@ -23,7 +23,7 @@ function CartItems() {
             if(cartItems[e.id] > 0){
                 return  <div key={e.id}>
         <div className="cartitems-format">
-            <img src={e.image} alt="" className='carticon-product-icon' />
+            <img src={e.image_url} alt="" className='carticon-product-icon' />
             <p className='cartitems-format-title'>{e.name}</p>
             <p>${e.new_price}</p>
             <p className='cartitems-quantity'>{cartItems[e.id]}</p>

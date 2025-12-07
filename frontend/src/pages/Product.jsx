@@ -13,6 +13,10 @@ function Product() {
   const {productID} = useParams();
   const product = all_product.find((e) => e.id === Number(productID) )
 
+    if (!product) {
+    return <div style={{ marginTop: 80 }}>Loading...</div>;
+  }
+
   return (
     <div>
       <Breadcrum product={product}/>
