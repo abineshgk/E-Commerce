@@ -62,7 +62,7 @@ function Chatbot() {
                 {m.text}
               </div>
             ))}
-            {loading && <div className="chat-msg bot">Typing...</div>}
+            {loading && <div className="chat-msg bot">Thinking...</div>}
           </div>
 
           <div className="chatbot-input">
