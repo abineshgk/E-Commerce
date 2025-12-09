@@ -7,6 +7,7 @@ const fs = require("fs");
 const pool = require("./db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken") 
+const axios = require("axios")
 
 const JWT_SECRET = "secret_ecom";
 
@@ -518,8 +519,77 @@ app.get("/api/getcart", fetchUser, async (req, res) => {
   }
 });
 
+// Get all users 
+
+app.get("/api/users", fetchUser, async (req, res) => {
+  try {
+
+    const [rows] = await pool.query(
+      "SELECT id, name, email FROM users ORDER BY id DESC"
+    );
+
+    return res.json({
+      success: 1,
+      users: rows,
+    });
+  } catch (err) {
+    console.error("Users fetch error:", err);
+    return res
+      .status(500)
+      .json({ success: 0, message: "Database error while fetching users" });
+  }
+});
 
 
+// Route for Chatbot
+
+app.post("/api/chat", async (req, res) => {
+  try {
+    const { message } = req.body
+
+    if(! message){
+      return res.status(400).json({
+        success: 0,
+        message: "Message is required"
+      }) 
+    }
+
+    const aiResponse = await axios.post(
+      "https://api.openai.com/v1/chat/completions",
+      {
+        model: "gpt-4o-mini",
+        messages: [{
+          role: "system",
+          content:  "You are an AI assistant for an e-commerce site called GKA Shoppyy. Answer briefly and help with products and orders.",
+        },
+        {role: "user",
+          content: message,
+        }
+      ]
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+          "Content-Type": "application/json"
+        }
+      }
+    )
+
+    const botReply = aiResponse.data.choices[0].message.content || "Sorry i couldn't understand that."
+
+    return res.json({
+      success: 1,
+      reply: botReply
+    })
+
+  } catch (error) {
+    console.error("Chat API error", error.response.data || error)
+    return res.status(500).json({
+      success: 0,
+      message: "Error While contacting AI service"
+    })
+  }
+})
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
