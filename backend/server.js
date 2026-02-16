@@ -9,7 +9,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken") 
 const axios = require("axios")
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = "secret_ecom";
 
 function generateToken(user) {
   const data = {
@@ -28,14 +28,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
-app.use(cors({
-  origin: [
-    "http://localhost:5173",                  
-    "https://ecommerrcee.netlify.app/" 
-  ],
-  credentials: true
-}));
-
+app.use(cors());
 
 const uploadDir = path.join(__dirname, "upload", "images");
 fs.mkdirSync(uploadDir, { recursive: true });
