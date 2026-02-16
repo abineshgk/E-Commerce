@@ -1,7 +1,7 @@
 
 .navbar{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 16px;
   box-shadow: 0 1px 3px -2px black;
 }
@@ -79,6 +79,18 @@
   font-size: 18px;
   font-weight: bold;
   color: rgb(255, 0, 0);
+}
+
+.nav-profile {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.nav-profile:hover{
+  scale: 1.05;
 }
 
 /* Navbar Responsive */

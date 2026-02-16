@@ -9,7 +9,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken") 
 const axios = require("axios")
 
-const JWT_SECRET = "secret_ecom";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 function generateToken(user) {
   const data = {
@@ -28,7 +28,14 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173",                  
+    "https://ecommerrcee.netlify.app/" 
+  ],
+  credentials: true
+}));
+
 
 const uploadDir = path.join(__dirname, "upload", "images");
 fs.mkdirSync(uploadDir, { recursive: true });
@@ -52,7 +59,7 @@ app.use("/images", express.static(uploadDir));
 
 
 app.get("/", (req, res) => {
-  res.send("Minimal upload server running ✅");
+  res.send("Minimal upload server running");
 });
 
 
@@ -74,6 +81,7 @@ app.post("/upload", upload.single("product"), (req, res) => {
   });
 });
 
+// API to add products
 
 app.post("/api/product", upload.single("product"), async (req, res) => {
   try {
@@ -122,15 +130,11 @@ app.post("/api/product", upload.single("product"), async (req, res) => {
 
 app.delete("/api/product/:id", async (req, res) => {
   const { id } = req.params;
-
-  
   if (!id || isNaN(id)) {
     return res.status(400).json({ success: 0, message: "Invalid product id" });
   }
-
   try {
-   
-    const [rows] = await pool.query(
+      const [rows] = await pool.query(
       "SELECT image_url FROM products WHERE id = ?",
       [id]
     );
@@ -143,7 +147,6 @@ app.delete("/api/product/:id", async (req, res) => {
 
     const imageUrl = rows[0].image_url;
 
-   
     const [result] = await pool.query("DELETE FROM products WHERE id = ?", [
       id,
     ]);
